@@ -162,7 +162,7 @@ export function HeroSection() {
       <div className="pointer-events-none relative z-1 mx-auto mt-6 flex flex-col items-center justify-center sm:absolute sm:bottom-0 sm:left-1/2 sm:mt-0 sm:-translate-x-1/2">
         <Image
           aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-auto w-[min(1149px,100vw)] min-w-[340px] -translate-x-1/2 sm:min-w-0"
+          className="pointer-events-none absolute bottom-0 left-1/2 z-0 h-auto w-[min(1149px,100vw)] min-w-[340px] -translate-x-1/2 sm:min-w-0 sm:w-[640px] md:w-[740px] md:min-w-0 lg:w-[1149px] xl:w-[1180px] max-w-[1200px]"
           src="/images/hero-images/frame-four.png"
           alt=""
           width={1149}
@@ -171,20 +171,20 @@ export function HeroSection() {
         />
         <div className="hero-person-anim relative z-1">
           <Image
-            className="h-auto w-[min(340px,85vw)] object-contain drop-shadow-2xl sm:w-[min(722px,70vw)]"
+            className="h-auto w-[min(340px,85vw)] object-contain drop-shadow-2xl sm:w-[500px] md:w-[580px] lg:w-[722px] xl:w-[722px]"
             src="/images/hero-images/hero-person.png"
             alt="A student learning with a laptop"
             width={722}
             height={515}
             priority
-            sizes="(max-width: 640px) 85vw, (max-width: 1024px) 85vw, (max-width: 1280px) 75vw, 680px"
+            sizes="(max-width: 640px) 85vw, (max-width: 768px) 500px, (max-width: 1024px) 580px, 722px"
           />
         </div>
       </div>
 
-      {/* Floating 3D Shapes with Cursor Parallax + Ambient Bobbing */}
+      {/* Floating 3D Shapes with Cursor Parallax + Ambient Bobbing (Stationary on mobile, animated on desktop) */}
       {/* 1. Frame One (top left) */}
-      <div className="pointer-events-none absolute -left-2 top-[28%] z-0 hidden w-28 sm:block sm:w-40 md:w-52">
+      <div className="pointer-events-none absolute -left-2 top-[14%] z-0 w-14 opacity-60 sm:top-[28%] sm:w-40 sm:opacity-100 md:w-52">
         <div data-depth="40" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -199,7 +199,7 @@ export function HeroSection() {
       </div>
 
       {/* 2. Cone Two (top right) */}
-      <div className="pointer-events-none absolute right-[-2%] top-[25%] z-0 hidden w-24 sm:block sm:w-32 md:w-44">
+      <div className="pointer-events-none absolute -right-1 top-[18%] z-0 w-12 opacity-60 sm:right-[-2%] sm:top-[25%] sm:w-32 sm:opacity-100 md:w-44">
         <div data-depth="-45" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -214,7 +214,7 @@ export function HeroSection() {
       </div>
 
       {/* 3. Frame Two (mid left) */}
-      <div className="pointer-events-none absolute left-[15%] top-[49%] z-0 hidden w-20 sm:block sm:w-24">
+      <div className="pointer-events-none absolute left-[2%] top-[45%] z-0 w-10 opacity-50 sm:left-[15%] sm:top-[49%] sm:w-24 sm:opacity-100">
         <div data-depth="25" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -229,7 +229,7 @@ export function HeroSection() {
       </div>
 
       {/* 4. Cone One (bottom left) */}
-      <div className="pointer-events-none absolute left-[4%] bottom-[6%] z-0 hidden w-36 sm:block sm:w-48 md:w-60">
+      <div className="pointer-events-none absolute -left-1 bottom-[16%] z-0 w-16 opacity-60 sm:bottom-[6%] sm:left-[4%] sm:w-48 sm:opacity-100 md:w-60">
         <div data-depth="50" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -244,7 +244,7 @@ export function HeroSection() {
       </div>
 
       {/* 5. Cone Three (mid right) */}
-      <div className="pointer-events-none absolute right-[5%] top-[47%] z-0 hidden w-20 sm:block sm:w-24 md:w-32">
+      <div className="pointer-events-none absolute right-[2%] top-[48%] z-0 w-11 opacity-50 sm:right-[5%] sm:top-[47%] sm:w-24 sm:opacity-100 md:w-32">
         <div data-depth="-30" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -259,7 +259,7 @@ export function HeroSection() {
       </div>
 
       {/* 6. Frame Three (bottom right) */}
-      <div className="pointer-events-none absolute right-[4%] bottom-[6%] z-0 hidden w-28 sm:block sm:w-40 md:w-48">
+      <div className="pointer-events-none absolute -right-1 bottom-[18%] z-0 w-14 opacity-60 sm:bottom-[6%] sm:right-[4%] sm:w-40 sm:opacity-100 md:w-48">
         <div data-depth="-45" className="parallax-item">
           <div className="floating-element">
             <Image
@@ -279,7 +279,7 @@ export function HeroSection() {
         aria-label="Course highlights"
       >
         {/* Card 1: UI/UX Design */}
-        <div className="pointer-events-auto relative sm:absolute sm:top-[60%] sm:left-[8%] md:top-[62%] md:left-[15%] lg:top-[62.4%] lg:left-[28%]">
+        <div className="pointer-events-auto relative sm:absolute sm:top-[60%] sm:left-[8%] md:top-[62%] md:left-[15%] lg:top-[61%] lg:left-[27.5%] xl:top-[60%] xl:left-[28%]">
           <div data-depth="30" className="parallax-item">
             <div className="floating-element">
               <div className="grid gap-1 rounded-2xl bg-white/95 p-3.5 text-left text-[#242528] shadow-[0_12px_28px_rgba(7,18,59,0.14)] border border-white/40 backdrop-blur-md transition-transform duration-200 hover:scale-105 sm:px-3.75 sm:py-3">
@@ -293,7 +293,7 @@ export function HeroSection() {
         </div>
 
         {/* Card 2: Learning Progress */}
-        <div className="pointer-events-auto relative sm:absolute sm:top-[58%] sm:right-[6%] md:top-[61%] md:right-[12%] lg:top-[63.6%] lg:right-[25%]">
+        <div className="pointer-events-auto relative sm:absolute sm:top-[58%] sm:right-[6%] md:top-[61%] md:right-[12%] lg:top-[61.5%] lg:right-[24.5%] xl:top-[61%] xl:right-[25%]">
           <div data-depth="-38" className="parallax-item">
             <div className="floating-element">
               <div className="grid w-full gap-2 rounded-2xl bg-brand-white/95 p-3.5 text-left text-brand-black shadow-[0_12px_28px_rgba(7,18,59,0.14)] border border-white/40 backdrop-blur-md transition-transform duration-200 hover:scale-105 sm:w-44 sm:p-3 sm:gap-2 md:w-52 lg:w-58">
@@ -312,7 +312,7 @@ export function HeroSection() {
         </div>
 
         {/* Card 3: Happy Students */}
-        <div className="pointer-events-auto relative sm:absolute sm:top-[77%] sm:left-[5%] md:top-[79%] md:left-[10%] lg:top-[81.7%] lg:left-[22.8%]">
+        <div className="pointer-events-auto relative sm:absolute sm:top-[77%] sm:left-[5%] md:top-[79%] md:left-[10%] lg:top-[80%] lg:left-[22%] xl:top-[79.5%] xl:left-[22.5%]">
           <div data-depth="28" className="parallax-item">
             <div className="floating-element">
               <div className="flex w-full items-center justify-between gap-3 rounded-2xl bg-brand-white/95 p-3.5 text-left text-brand-black shadow-[0_12px_28px_rgba(7,18,59,0.14)] border border-white/40 backdrop-blur-md transition-transform duration-200 hover:scale-105 sm:grid sm:w-48 sm:p-3 md:w-56 lg:w-64.5">
