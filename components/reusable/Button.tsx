@@ -4,24 +4,6 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { LoaderCircle } from 'lucide-react';
 import { cn } from 'cn';
 
-/**
- * Reusable Button for the whole app.
- *
- * - Renders a `<button>` by default, and a `next/link` when `href` is passed
- *   (external URLs render a plain `<a>` with `rel="noopener noreferrer"`).
- * - Has no hooks, so it can be used from both Server and Client Components.
- * - Colours come from the theme tokens in `app/globals.css`, so it follows
- *   light/dark mode automatically.
- *
- * @example
- * <Button>Save</Button>
- * <Button color="accent">Enroll now</Button>
- * <Button href="/courses" variant="outline" size="lg">Browse</Button>
- * <Button color="danger" loading loadingText="Deleting...">Delete</Button>
- *
- * Colours: primary (brand blue) | accent (brand lime) | secondary | neutral |
- * success | warning | danger | info — each with solid / soft / outline / ghost / link.
- */
 const buttonVariants = cva(
   [
     'group/btn relative inline-flex shrink-0 select-none items-center justify-center gap-2 whitespace-nowrap border border-transparent bg-clip-padding font-medium outline-none transition-colors duration-200',
@@ -32,8 +14,7 @@ const buttonVariants = cva(
   ],
   {
     variants: {
-      /* Colour palette. `--btn-bg`/`--btn-fg` paint solid buttons, `--btn-color`
-         is the readable accent used by soft/outline/ghost/link (light/dark aware). */
+    
       color: {
         primary:
           '[--btn-bg:var(--primary)] [--btn-fg:var(--primary-foreground)] [--btn-color:var(--primary)] dark:[--btn-color:color-mix(in_oklab,var(--primary),white_45%)]',
@@ -63,8 +44,7 @@ const buttonVariants = cva(
         'icon-lg': 'size-11',
         'icon-xl': 'size-12',
       },
-      /* Visual style. Declared after `size` on purpose: with `cn()` (tailwind-merge)
-         the later classes win, so overrides here beat the size preset. */
+    
       variant: {
         solid: 'border-(--btn-bg) bg-(--btn-bg) text-(--btn-fg) hover:opacity-90',
         soft: 'border-(--btn-color)/20 bg-(--btn-color)/10 text-(--btn-color) hover:bg-(--btn-color)/20',
@@ -143,14 +123,9 @@ export interface ButtonAsLinkProps
   ref?: React.Ref<HTMLAnchorElement>;
 }
 
-/**
- * Either a native-button props bag, or a link props bag when `href` is given.
- * TypeScript picks the right one from `href`, so `onClick`, `disabled`, `target`,
- * `rel`, `prefetch`, ... are all typed for the element that actually renders.
- */
+
 export type ButtonProps = ButtonAsButtonProps | ButtonAsLinkProps;
 
-/** Internal loose shape used by the render body — public props are already narrowed by `ButtonProps`. */
 type ButtonRenderProps = ButtonBaseProps &
   Omit<React.ComponentProps<'button'>, 'color' | 'children' | 'className' | 'ref'> &
   Omit<
