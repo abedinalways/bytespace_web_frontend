@@ -1,26 +1,144 @@
-@import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@400,500,600,700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-blue:  #003BE2;
+  --color-brand-gray:  #82868E;
+  --color-brand-lime:  #D4FB20;
+  --color-brand-black: #040819;
+  --color-brand-white: #F5F5F6;
+  --color-background:           var(--background);
+  --color-foreground:           var(--foreground);
+  --color-card:                 var(--card);
+  --color-card-foreground:      var(--card-foreground);
+  --color-popover:              var(--popover);
+  --color-popover-foreground:   var(--popover-foreground);
+  --color-primary:              var(--primary);
+  --color-primary-foreground:   var(--primary-foreground);
+  --color-secondary:            var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted:                var(--muted);
+  --color-muted-foreground:     var(--muted-foreground);
+  --color-accent:               var(--accent);
+  --color-accent-foreground:    var(--accent-foreground);
+  --color-destructive:          var(--destructive);
+  --color-border:               var(--border);
+  --color-input:                var(--input);
+  --color-ring:                 var(--ring);
+
+  /* --- Typography --- */
+  --font-sans:    "Satoshi", sans-serif;
+  --font-mono:    var(--font-geist-mono);
+  --font-heading: "Clash Display", sans-serif;
+  --font-body:    var(--font-poppins), "Poppins", sans-serif;
+
+  /* --- Border radius scale --- */
+  --radius-sm:  calc(var(--radius) * 0.6);
+  --radius-md:  calc(var(--radius) * 0.8);
+  --radius-lg:  var(--radius);
+  --radius-xl:  calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ============================================================
+   LIGHT MODE
+   ============================================================ */
+:root {
+  /* Surfaces */
+  --background:         #F5F5F6;
+  --foreground:         #040819;
+
+  /* Card / Popover */
+  --card:               #ffffff;
+  --card-foreground:    #040819;
+  --popover:            #ffffff;
+  --popover-foreground: #040819;
+
+  /* Primary → brand blue */
+  --primary:            #003BE2;
+  --primary-foreground: #F5F5F6;
+
+  /* Secondary → soft neutral */
+  --secondary:            #eeeef0;
+  --secondary-foreground: #040819;
+
+  /* Muted → subtle gray surface */
+  --muted:              #eeeef0;
+  --muted-foreground:   #82868E;
+
+  /* Accent → brand lime */
+  --accent:             #D4FB20;
+  --accent-foreground:  #040819;
+
+  /* Destructive */
+  --destructive:        oklch(0.577 0.245 27.325);
+
+  /* Borders, inputs, focus ring */
+  --border:  #dddde0;
+  --input:   #dddde0;
+  --ring:    #003BE2;
+
+  /* Base radius */
+  --radius: 0.625rem;
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+.dark {
+  /* Surfaces */
+  --background:         #040819;
+  --foreground:         #F5F5F6;
+
+  /* Card / Popover */
+  --card:               #0c1228;
+  --card-foreground:    #F5F5F6;
+  --popover:            #0c1228;
+  --popover-foreground: #F5F5F6;
+
+  /* Primary → brand blue */
+  --primary:            #003BE2;
+  --primary-foreground: #F5F5F6;
+
+  /* Secondary → dark surface layer */
+  --secondary:            #161d35;
+  --secondary-foreground: #F5F5F6;
+
+  /* Muted */
+  --muted:              #161d35;
+  --muted-foreground:   #82868E;
+
+  /* Accent → brand lime */
+  --accent:             #D4FB20;
+  --accent-foreground:  #040819;
+
+  /* Destructive */
+  --destructive:        oklch(0.704 0.191 22.216);
+
+  /* Borders, inputs, focus ring */
+  --border:  oklch(1 0 0 / 10%);
+  --input:   oklch(1 0 0 / 15%);
+  --ring:    #003BE2;
+}
+
+/* ============================================================
+   BASE LAYER
+   ============================================================ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

@@ -1,0 +1,36 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "chore/folder-structure-setup",
+    "development",
+    "feature/auth",
+    "feature/courses",
+    "feature/creators",
+    "feature/homePage",
+    "feature/seo",
+    "main",
+    "origin"
+  ],
+  "parent": {
+    "chore/folder-structure-setup": "main",
+    "development": "main",
+    "feature/auth": "main",
+    "feature/courses": "main",
+    "feature/creators": "main",
+    "feature/homePage": "main",
+    "feature/seo": "main",
+    "main": null,
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "chore/folder-structure-setup",
+    "development",
+    "feature/auth",
+    "feature/courses",
+    "feature/creators",
+    "feature/homePage",
+    "feature/seo",
+    "origin"
+  ]
+}
