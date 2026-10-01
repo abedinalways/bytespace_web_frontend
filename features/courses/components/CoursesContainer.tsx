@@ -23,7 +23,7 @@ export function CoursesContainer() {
   const filteredCourses = useMemo(() => {
     return allCoursesData
       .filter((course) => {
-        // Search filter
+     
         if (searchQuery.trim()) {
           const q = searchQuery.toLowerCase();
           const matchTitle = course.title.toLowerCase().includes(q);
@@ -32,14 +32,14 @@ export function CoursesContainer() {
           if (!matchTitle && !matchCreator && !matchCategory) return false;
         }
 
-        // Category filter (if not "Featured", match category)
+     
         if (selectedCategory !== 'Featured') {
           if (course.category.toLowerCase() !== selectedCategory.toLowerCase()) {
             return false;
           }
         }
 
-        // Level filter
+      
         if (selectedLevel !== 'All Levels') {
           if (course.level !== selectedLevel) return false;
         }
@@ -64,7 +64,7 @@ export function CoursesContainer() {
       });
   }, [searchQuery, selectedCategory, selectedLevel, selectedSort]);
 
-  // Paginated courses
+  
   const totalPages = Math.max(1, Math.ceil(filteredCourses.length / ITEMS_PER_PAGE));
   const displayedCourses = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -115,9 +115,9 @@ export function CoursesContainer() {
         onTypeChange={setSelectedType}
       />
 
-      {/* 2. Main Content Container */}
+    
       <main className="mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-        {/* Filters and Sort Toolbar */}
+       
         <CoursesFilterToolbar
           selectedLevel={selectedLevel}
           onLevelChange={handleLevelChange}
@@ -129,19 +129,19 @@ export function CoursesContainer() {
           hasActiveFilters={hasActiveFilters}
         />
 
-        {/* Category Pills */}
+        
         <CoursesCategoryPills
           selectedCategory={selectedCategory}
           onSelectCategory={handleCategoryChange}
         />
 
-        {/* Course Cards Grid */}
+        
         <CoursesGrid
           courses={displayedCourses}
           onResetFilters={hasActiveFilters ? handleResetFilters : undefined}
         />
 
-        {/* Pagination */}
+        
         {filteredCourses.length > 0 && (
           <CoursesPagination
             currentPage={currentPage}

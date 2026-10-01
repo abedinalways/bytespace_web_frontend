@@ -9,6 +9,9 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { CourseLevel, SortOption } from '../types/course';
+import CategoryIcon from '@/components/icons/courses/CategoryIcon';
+import FilterIcon from '@/components/icons/courses/FilterIcon';
+import NetworkIcon from '@/components/icons/courses/NetworkIcon';
 
 interface CoursesFilterToolbarProps {
   selectedLevel: CourseLevel;
@@ -59,7 +62,7 @@ export function CoursesFilterToolbar({
           }`}
           title={hasActiveFilters ? 'Reset Filters' : 'Filter Options'}
         >
-          <SlidersHorizontal className="size-3.5" />
+          <FilterIcon className="size-3.5" />
           <span>Filter</span>
           {hasActiveFilters && <RotateCcw className="size-3 ml-0.5 text-brand-blue" />}
         </button>
@@ -79,16 +82,8 @@ export function CoursesFilterToolbar({
             }`}
           >
             {/* 3-bar signal icon */}
-            <svg
-              className="size-3.5 text-current"
-              viewBox="0 0 16 16"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <rect x="2" y="9.5" width="2.5" height="4.5" rx="0.75" />
-              <rect x="6.75" y="6" width="2.5" height="8" rx="0.75" />
-              <rect x="11.5" y="2.5" width="2.5" height="11.5" rx="0.75" />
-            </svg>
+            <NetworkIcon className='size-3.5'/>
+            
             <span>{selectedLevel === 'All Levels' ? 'Level' : selectedLevel}</span>
             <ChevronDown
               className={`size-3.5 text-gray-400 transition-transform ${
@@ -138,7 +133,7 @@ export function CoursesFilterToolbar({
               : 'border-[#e4e5eb] bg-white text-[#4b5563] hover:border-gray-400 hover:text-[#111827]'
           }`}
         >
-          <LayoutGrid className="size-3.5" />
+          <CategoryIcon className='size-3.5'/>
           <span>Category</span>
         </button>
       </div>
