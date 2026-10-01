@@ -1,4 +1,13 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+}
 
 interface Brand {
   name: string;
@@ -93,13 +102,32 @@ const BRANDS: Brand[] = [
 ];
 
 export function Branding() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(
+    () => {
+      gsap.from(sectionRef.current, {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 92%',
+          once: true,
+        },
+        opacity: 0,
+        y: 20,
+        duration: 0.7,
+        ease: 'power2.out',
+      });
+    },
+    { scope: sectionRef },
+  );
+
   return (
     <section
+      ref={sectionRef}
       aria-label="Partner brands"
       className="relative w-full overflow-hidden bg-branding-bg py-8 sm:py-10 md:py-12"
     >
       <div className="pause-on-hover flex select-none overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        {/* Set 1 */}
         <div className="animate-marquee flex shrink-0 items-center justify-around gap-10 sm:gap-14 md:gap-20">
           {BRANDS.map((brand, idx) => (
             <div

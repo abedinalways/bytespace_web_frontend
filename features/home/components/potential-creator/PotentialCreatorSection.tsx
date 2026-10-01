@@ -4,26 +4,51 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Button } from '@/components/reusable/Button';
 
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
 
 export function PotentialCreatorSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Automatic Continuous Floating Animation
   useGSAP(
     () => {
+      gsap.from('.creator-content-anim', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 80%',
+          once: true,
+        },
+        y: 35,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.floating-creator-shape', {
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: 'top 85%',
+          once: true,
+        },
+        scale: 0.7,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.05,
+        ease: 'back.out(1.4)',
+      });
+
       const mm = gsap.matchMedia();
 
-      // Auto-animates on desktop and tablets (>= 640px)
       mm.add('(min-width: 640px)', () => {
         const floatingElements = gsap.utils.toArray<HTMLElement>('.floating-creator-shape');
         floatingElements.forEach((el, index) => {
-          const duration = 2.4 + (index % 4) * 0.5; // 2.4s to 3.9s
-          const yDistance = 12 + (index % 3) * 4;   // 12px to 20px
+          const duration = 2.4 + (index % 4) * 0.5;
+          const yDistance = 12 + (index % 3) * 4;
           const rotAngle = (index % 2 === 0 ? 1 : -1) * (3 + (index % 3) * 1.5);
 
           gsap.to(el, {
@@ -143,26 +168,25 @@ export function PotentialCreatorSection() {
         />
       </div>
 
-      {/* Central Content */}
       <div className="relative z-10 max-w-3xl lg:max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center py-6 sm:py-8">
-        <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold font-heading text-white tracking-tight leading-[1.18] sm:leading-[1.14]">
+        <h2 className="creator-content-anim text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold font-heading text-white tracking-tight leading-[1.18] sm:leading-[1.14]">
           Unlock Your Potential as a
           <br className="hidden sm:inline" /> Creator with ByteSpace
         </h2>
 
-        <p className="mt-4 sm:mt-5 text-white/80 text-xs xs:text-sm sm:text-base leading-relaxed max-w-2xl lg:max-w-3xl px-2 sm:px-4">
+        <p className="creator-content-anim mt-4 sm:mt-5 text-white/80 text-xs xs:text-sm sm:text-base leading-relaxed max-w-2xl lg:max-w-3xl px-2 sm:px-4">
           Experience the collaboration of numerous creators and an expanding selection of
           courses. Register now and become a part of a community comprising over 10,000 local
           and international creators. Utilize our Course Editor, and showcase your expertise
           by publishing your finest course on the ByteSpace Course Library.
         </p>
 
-        <div className="mt-6 sm:mt-8">
+        <div className="creator-content-anim mt-6 sm:mt-8">
           <Button
             color="accent"
             rounded="full"
             size="lg"
-            className="font-semibold text-brand-black px-7 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base shadow-lg hover:brightness-105 active:scale-95 transition-all cursor-pointer"
+            className="font-semibold text-brand-black px-7 sm:px-8 py-3 sm:py-3.5 text-sm sm:text-base shadow-lg hover:brightness-105 active:scale-95 transition-all cursor-pointer border-none"
           >
             Join as Creator
           </Button>

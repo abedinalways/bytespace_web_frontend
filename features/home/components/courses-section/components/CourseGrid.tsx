@@ -90,9 +90,11 @@ export const coursesData: CourseCardProps[] = [
 
 export default function CourseGrid() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 max-w-[440px] sm:max-w-none mx-auto w-full">
+    <div className="courses-grid-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-7 max-w-[440px] sm:max-w-none mx-auto w-full">
       {coursesData.map((course) => (
-        <CourseCard key={course.title} {...course} />
+        <div key={course.title} className="course-card-item">
+          <CourseCard {...course} />
+        </div>
       ))}
     </div>
   );

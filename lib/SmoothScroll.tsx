@@ -1,6 +1,9 @@
 'use client';
-import { useEffect } from 'react';
+
+import React, { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 import Lenis from 'lenis';
+import 'lenis/dist/lenis.css';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -13,44 +16,48 @@ export default function SmoothScroll({
 }: {
   children: React.ReactNode;
 }) {
+  const lenisRef = useRef<Lenis | null>(null);
+  const pathname = usePathname();
+
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const previousScrollBehavior =
-      document.documentElement.style.scrollBehavior;
-    document.documentElement.style.scrollBehavior = 'auto';
-
     const lenis = new Lenis({
-      lerp: 0.1, // Higher = faster/snappier, Lower = slower/smoother (0.1 is standard professional)
-      duration: 1.5,
-      easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 1.1,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.5,
-      infinite: false,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1,
+      syncTouch: false,
+      autoResize: true,
     });
 
-    // Sync GSAP's ScrollTrigger with Lenis
+    lenisRef.current = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
-    // Use GSAP ticker to drive Lenis (Much more stable than manual RAF)
     const updateLenis = (time: number) => {
       lenis.raf(time * 1000);
     };
 
     gsap.ticker.add(updateLenis);
-
-    // Avoid GSAP ticker conflicts
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     return () => {
-      lenis.destroy();
       gsap.ticker.remove(updateLenis);
-      document.documentElement.style.scrollBehavior = previousScrollBehavior;
+      lenis.destroy();
+      lenisRef.current = null;
     };
   }, []);
+
+  useEffect(() => {
+    if (!lenisRef.current) return;
+    lenisRef.current.scrollTo(0, { immediate: true });
+    lenisRef.current.resize();
+    ScrollTrigger.refresh();
+  }, [pathname]);
 
   return <>{children}</>;
 }

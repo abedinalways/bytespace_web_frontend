@@ -4,13 +4,14 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { GrowthStats } from './components/GrowthStats';
 import { GrowthTopVisual } from './components/GrowthTopVisual';
 import { GrowthBottomVisual } from './components/GrowthBottomVisual';
 import { GrowthChecklist } from './components/GrowthChecklist';
 
 if (typeof window !== 'undefined') {
-  gsap.registerPlugin(useGSAP);
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
 }
 
 export function ProfessionalGrowthSection() {
@@ -18,9 +19,58 @@ export function ProfessionalGrowthSection() {
 
   useGSAP(
     () => {
+      gsap.from('.growth-row-1-text', {
+        scrollTrigger: {
+          trigger: '.growth-row-1-text',
+          start: 'top 85%',
+          once: true,
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.growth-row-1-visual', {
+        scrollTrigger: {
+          trigger: '.growth-row-1-visual',
+          start: 'top 85%',
+          once: true,
+        },
+        y: 50,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.85,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.growth-row-2-visual', {
+        scrollTrigger: {
+          trigger: '.growth-row-2-visual',
+          start: 'top 85%',
+          once: true,
+        },
+        y: 50,
+        opacity: 0,
+        scale: 0.95,
+        duration: 0.85,
+        ease: 'power3.out',
+      });
+
+      gsap.from('.growth-row-2-text', {
+        scrollTrigger: {
+          trigger: '.growth-row-2-text',
+          start: 'top 85%',
+          once: true,
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out',
+      });
+
       const mm = gsap.matchMedia();
 
-      // Only animate the 3D frames across screens
       mm.add('(min-width: 320px)', () => {
         const frameElements = gsap.utils.toArray<HTMLElement>('.floating-growth-frame');
         frameElements.forEach((el, index) => {
@@ -105,9 +155,8 @@ export function ProfessionalGrowthSection() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Row 1: Your Path to Professional Growth */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center mb-20 sm:mb-24 lg:mb-32">
-          <div className="flex flex-col text-left">
+          <div className="growth-row-1-text flex flex-col text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold font-heading text-brand-black dark:text-foreground tracking-tight leading-[1.12]">
               Your Path to Professional
               <br />
@@ -124,18 +173,17 @@ export function ProfessionalGrowthSection() {
             </div>
           </div>
 
-          <div className="w-full flex justify-center">
+          <div className="growth-row-1-visual w-full flex justify-center">
             <GrowthTopVisual />
           </div>
         </div>
 
-        {/* Row 2: Create & Manage Courses Easily */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-14 lg:gap-16 items-center">
-          <div className="order-last lg:order-first w-full flex justify-center">
+          <div className="growth-row-2-visual order-last lg:order-first w-full flex justify-center">
             <GrowthBottomVisual />
           </div>
 
-          <div className="flex flex-col text-left">
+          <div className="growth-row-2-text flex flex-col text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-[48px] xl:text-[52px] font-bold font-heading text-brand-black dark:text-foreground tracking-tight leading-[1.12]">
               Create &amp; Manage
               <br />

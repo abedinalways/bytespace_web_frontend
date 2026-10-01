@@ -1,6 +1,6 @@
 export function CommunityHeader() {
   return (
-    <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12 mb-12 sm:mb-14 lg:mb-16">
+    <div className="community-header-anim flex flex-col lg:flex-row lg:items-start justify-between gap-6 lg:gap-12 mb-12 sm:mb-14 lg:mb-16">
       <div className="max-w-xl lg:max-w-lg xl:max-w-xl">
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[48px] font-bold font-heading text-brand-black dark:text-foreground tracking-tight leading-[1.12]">
           Discover What Our

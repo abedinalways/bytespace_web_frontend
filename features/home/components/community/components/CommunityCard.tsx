@@ -7,7 +7,7 @@ interface CommunityCardProps {
 
 export function CommunityCard({ testimonial }: CommunityCardProps) {
   return (
-    <div className="bg-white dark:bg-card rounded-[24px] sm:rounded-[28px] lg:rounded-[36px] p-6 sm:p-8 lg:p-9 xl:p-10 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-100/90 dark:border-border/60 hover:shadow-md transition-shadow flex flex-col justify-start h-full">
+    <div className="community-card-item bg-white dark:bg-card rounded-[24px] sm:rounded-[28px] lg:rounded-[36px] p-6 sm:p-8 lg:p-9 xl:p-10 shadow-[0_4px_25px_rgba(0,0,0,0.03)] border border-gray-100/90 dark:border-border/60 hover:shadow-md transition-shadow flex flex-col justify-start h-full">
       <div className="relative w-14 h-14 sm:w-16 sm:h-16 lg:w-[68px] lg:h-[68px] rounded-full overflow-hidden mb-5 sm:mb-6 shrink-0">
         <Image
           src={testimonial.avatar}
