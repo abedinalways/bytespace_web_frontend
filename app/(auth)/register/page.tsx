@@ -7,7 +7,11 @@ import { AuthVisualHero } from '@/features/auth/components/AuthVisualHero';
 
 export const metadata: Metadata = {
   title: 'Sign Up — ByteSpace',
-  description: 'Create an account and start learning with ByteSpace courses',
+  description: 'Create an account and start learning with ByteSpace courses.',
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RegisterPage() {
