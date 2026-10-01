@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   BookOpen,
   ChevronRight,
@@ -14,6 +15,11 @@ import { Logo } from '../reusable/Logo';
 export function Navbar({ overlay = false }: { overlay?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+
+  const isHomeActive = pathname === '/';
+  const isCoursesActive = pathname.startsWith('/courses');
+  const isCreatorsActive = pathname.startsWith('/creators');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,11 +69,36 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden shrink-0 items-center gap-7 whitespace-nowrap text-[15px] md:flex [&_a]:transition-opacity [&_a]:hover:opacity-75 [&_a]:focus-visible:rounded-sm [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-4 [&_a]:focus-visible:outline-brand-lime"
+            className="hidden shrink-0 items-center gap-7 whitespace-nowrap text-[15px] md:flex [&_a]:focus-visible:rounded-sm [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-4 [&_a]:focus-visible:outline-brand-lime"
           >
-            <Link href="/">Home</Link>
-            <Link href="/courses">Courses</Link>
-            <Link className="max-[420px]:hidden" href="/creators">
+            <Link
+              href="/"
+              className={`transition-colors ${
+                isHomeActive
+                  ? 'text-brand-lime font-bold'
+                  : 'text-white hover:opacity-75 transition-opacity'
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              href="/courses"
+              className={`transition-colors ${
+                isCoursesActive
+                  ? 'text-brand-lime font-bold'
+                  : 'text-white hover:opacity-75 transition-opacity'
+              }`}
+            >
+              Courses
+            </Link>
+            <Link
+              href="/creators"
+              className={`max-[420px]:hidden transition-colors ${
+                isCreatorsActive
+                  ? 'text-brand-lime font-bold'
+                  : 'text-white hover:opacity-75 transition-opacity'
+              }`}
+            >
               Creators
             </Link>
           </nav>
@@ -160,6 +191,10 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           <nav className="flex flex-col gap-2">
             {navLinks.map((link, index) => {
               const Icon = link.icon;
+              const isActive =
+                link.href === '/'
+                  ? pathname === '/'
+                  : pathname.startsWith(link.href);
               return (
                 <Link
                   key={link.label}
@@ -168,17 +203,29 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
                   style={{
                     transitionDelay: isMenuOpen ? `${(index + 1) * 45}ms` : '0ms',
                   }}
-                  className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-base font-medium text-white/90 transition-all duration-300 hover:bg-white/10 hover:text-white active:scale-[0.98] ${
+                  className={`group flex items-center justify-between rounded-xl px-4 py-3.5 text-base transition-all duration-300 active:scale-[0.98] ${
+                    isActive
+                      ? 'bg-white/10 text-brand-lime font-bold'
+                      : 'text-white/90 font-medium hover:bg-white/10 hover:text-white'
+                  } ${
                     isMenuOpen
                       ? 'translate-x-0 opacity-100'
                       : '-translate-x-3 opacity-0'
                   }`}
                 >
                   <div className="flex items-center gap-3.5">
-                    <span className="grid size-9 place-items-center rounded-lg bg-white/10 text-white transition-colors group-hover:bg-white/20">
+                    <span
+                      className={`grid size-9 place-items-center rounded-lg transition-colors ${
+                        isActive
+                          ? 'bg-brand-lime text-brand-black'
+                          : 'bg-white/10 text-white group-hover:bg-white/20'
+                      }`}
+                    >
                       <Icon size={18} />
                     </span>
-                    <span>{link.label}</span>
+                    <span className={isActive ? 'text-brand-lime font-bold' : ''}>
+                      {link.label}
+                    </span>
                   </div>
                   <div className="flex items-center gap-2">
                     {link.badge ? (
