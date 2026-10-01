@@ -3,6 +3,7 @@ import { HeroSection } from "@/features/home/components/hero-secion/Hero";
 import { Branding } from "@/features/home/components/branding/Branding";
 import CoursesSection from "@/features/home/components/courses-section/CoursesSection";
 import ExploreSection from "@/features/home/components/explore-section/ExploreSection";
+import { ProfessionalGrowthSection } from "@/features/home/components/professional-growth";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Branding />
         <CoursesSection />
         <ExploreSection />
+        <ProfessionalGrowthSection />
       </main>
    </div>
   );
