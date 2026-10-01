@@ -21,82 +21,42 @@ const happyStudentAvatars = [
 
 export function AuthVisualHero() {
   return (
-    <div className="relative mx-auto flex w-full max-w-[460px] items-center justify-center py-8">
-      {/* Container with relative positioning for layered cards and 3D floating elements */}
-      <div className="relative w-full max-w-[370px]">
-
-        {/* 1. ANIMATED 3D SHAPE: Yellow / Lime Torus (Ring) - Top Left */}
-        <div className="animate-float-slow pointer-events-none absolute -left-10 -top-8 z-30 size-24 sm:-left-12 sm:-top-10 sm:size-28">
+    <div className="relative mx-auto flex w-full max-w-[540px] items-center justify-center py-2 sm:py-4">
+      <div className="relative h-[530px] w-full max-w-[440px] sm:h-[570px] sm:max-w-[490px]">
+        <div className="animate-float-slow pointer-events-none absolute -left-3 top-2 z-30 size-20 sm:-left-6 sm:top-2 sm:size-24">
           <Image
             src="/images/auth/Cone.png"
             alt="3D Ring"
-            width={120}
-            height={120}
+            width={110}
+            height={110}
             className="size-full object-contain drop-shadow-xl"
             priority
           />
         </div>
 
-        {/* 2. BACKGROUND CARD: Build Digital Asset (behind on the left) */}
-        <div className="pointer-events-none absolute -left-12 top-6 z-10 w-[270px] -rotate-6 rounded-[22px] border border-white/60 bg-white/95 p-3 shadow-xl backdrop-blur-sm sm:-left-16 sm:w-[310px]">
-          <div className="relative aspect-[1.8] w-full overflow-hidden rounded-xl bg-gray-100">
+        <div className="absolute left-0 top-12 z-10 w-[325px] rotate-0 rounded-[28px] border border-white/80 bg-white p-4 shadow-xl sm:top-14 sm:w-[365px]">
+          <div className="relative aspect-[1.65] w-full overflow-hidden rounded-2xl bg-gray-100">
             <Image
               src="/images/auth/frame02.png"
-              alt="Build Digital Asset Preview"
+              alt="Build Digital Asset"
               fill
               className="object-cover"
             />
-            <div className="absolute bottom-2 left-2">
-              <span className="rounded-full bg-white/80 px-2 py-0.5 text-[8.5px] font-semibold text-gray-700 backdrop-blur-xs">
+            <div className="absolute bottom-2.5 left-2.5">
+              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/90 px-2.5 py-0.5 text-[9px] font-semibold text-gray-800 backdrop-blur-sm sm:text-[10px]">
                 17 Lessons
               </span>
             </div>
           </div>
-          <div className="pt-2.5">
-            <h4 className="text-xs font-bold text-gray-900">Build Digital Asset</h4>
-            <p className="text-[10px] text-blue-600">by purepearl studio</p>
-            <div className="mt-1.5 flex items-center justify-between">
-              <span className="inline-flex items-center gap-1 rounded-full bg-gray-100 px-2 py-0.5 text-[8px] font-medium text-gray-600">
-                <BarChart3 size={10} /> Beginner
-              </span>
-              <span className="text-[11px] font-bold text-blue-700">$25/lifetime</span>
-            </div>
-          </div>
-        </div>
 
-        {/* 3. FOREGROUND MAIN CARD: the Power of Big Data */}
-        <div className="relative z-20 w-full rounded-[24px] border border-white/80 bg-white p-3.5 shadow-2xl transition-transform duration-300 hover:scale-[1.01]">
-          {/* Main Card Image with Badges */}
-          <div className="relative aspect-[1.7] w-full overflow-hidden rounded-2xl bg-gray-900">
-            <Image
-              src="/images/auth/frame01.png"
-              alt="The Power of Big Data Course"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-x-2 bottom-2 flex items-center justify-between gap-1 text-[#222]">
-              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/80 px-2 py-0.5 text-[8.5px] font-medium leading-none backdrop-blur-sm">
-                17 Lessons
-              </span>
-              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/80 px-2 py-0.5 text-[8.5px] font-medium leading-none backdrop-blur-sm">
-                2 hours 16 mins
-              </span>
-              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/80 px-2 py-0.5 text-[8.5px] font-medium leading-none backdrop-blur-sm">
-                59 Comments
-              </span>
-            </div>
-          </div>
-
-          {/* Main Card Details */}
-          <div className="px-1 pt-3 pb-1">
+          <div className="px-1 pt-3.5 pb-1">
             <div className="flex items-center justify-between gap-2">
-              <h3 className="text-sm font-bold tracking-tight text-gray-900 sm:text-[15px]">
-                the Power of Big Data
+              <h3 className="text-[15px] font-bold tracking-tight text-gray-900 sm:text-base">
+                Build Digital Asset
               </h3>
-              <div className="flex items-center gap-1 text-xs font-semibold text-gray-800">
+              <div className="flex items-center gap-1 text-xs font-bold text-gray-900">
                 <span>4.5</span>
-                <Star size={14} className="fill-amber-400 text-amber-400" />
+                <Star size={15} className="fill-[#D4FB20] text-[#D4FB20]" />
               </div>
             </div>
 
@@ -104,12 +64,11 @@ export function AuthVisualHero() {
               by <span className="font-medium text-blue-600">purepearl studio</span>
             </p>
 
-            <div className="mt-2.5 flex items-center justify-between">
+            <div className="mt-3 flex items-center justify-between">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-medium text-gray-700">
                 <BarChart3 size={13} className="text-gray-500" /> Beginner
               </span>
 
-              {/* Student Avatars Stack */}
               <div className="flex items-center pl-2">
                 {studentAvatars.map(avatar => (
                   <Image
@@ -127,15 +86,80 @@ export function AuthVisualHero() {
               </div>
             </div>
 
-            <div className="mt-2 flex items-baseline gap-1">
-              <span className="text-base font-bold text-blue-700">$25</span>
+            <div className="mt-2.5 flex items-baseline gap-1">
+              <span className="text-lg font-bold text-blue-700">$25</span>
               <span className="text-xs text-gray-500">/lifetime</span>
             </div>
           </div>
         </div>
 
-        {/* 4. ANIMATED 3D SHAPE: Lime Cone / Pyramid - Bottom Left */}
-        <div className="animate-float-reverse pointer-events-none absolute -bottom-10 -left-10 z-30 size-26 sm:-bottom-12 sm:-left-12 sm:size-30">
+        <div className="absolute right-0 top-0 z-20 w-[305px] rotate-0 rounded-[28px] border border-white/90 bg-white p-4 shadow-2xl sm:right-2 sm:w-[345px]">
+          <div className="relative aspect-[1.65] w-full overflow-hidden rounded-2xl bg-gray-900">
+            <Image
+              src="/images/auth/frame01.png"
+              alt="The Power of Big Data Course"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-x-2 bottom-2.5 flex items-center justify-between gap-1 text-[#222]">
+              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/90 px-2 py-0.5 text-[8.5px] font-semibold leading-none backdrop-blur-sm sm:px-2.5 sm:text-[9.5px]">
+                17 Lessons
+              </span>
+              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/90 px-2 py-0.5 text-[8.5px] font-semibold leading-none backdrop-blur-sm sm:px-2.5 sm:text-[9.5px]">
+                2 hours 16 mins
+              </span>
+              <span className="inline-flex items-center whitespace-nowrap rounded-full bg-white/90 px-2 py-0.5 text-[8.5px] font-semibold leading-none backdrop-blur-sm sm:px-2.5 sm:text-[9.5px]">
+                59 Comments
+              </span>
+            </div>
+          </div>
+
+          <div className="px-1 pt-3.5 pb-1">
+            <div className="flex items-center justify-between gap-2">
+              <h3 className="text-[15px] font-bold tracking-tight text-gray-900 sm:text-base">
+                the Power of Big Data
+              </h3>
+              <div className="flex items-center gap-1 text-xs font-bold text-gray-900">
+                <span>4.5</span>
+                <Star size={15} className="fill-[#D4FB20] text-[#D4FB20]" />
+              </div>
+            </div>
+
+            <p className="mt-0.5 text-[11px] text-gray-500">
+              by <span className="font-medium text-blue-600">purepearl studio</span>
+            </p>
+
+            <div className="mt-3 flex items-center justify-between">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-gray-100 px-2.5 py-1 text-[11px] font-medium text-gray-700">
+                <BarChart3 size={13} className="text-gray-500" /> Beginner
+              </span>
+
+              <div className="flex items-center pl-2">
+                {studentAvatars.map(avatar => (
+                  <Image
+                    key={avatar}
+                    src={`https://images.unsplash.com/${avatar}?auto=format&fit=crop&w=64&h=64&q=80`}
+                    alt="Student"
+                    width={28}
+                    height={28}
+                    className="-ml-2 size-7 rounded-full border-2 border-white object-cover"
+                  />
+                ))}
+                <span className="-ml-2 grid size-7 place-items-center rounded-full border-2 border-white bg-black text-[9px] font-bold text-white">
+                  26+
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-2.5 flex items-baseline gap-1">
+              <span className="text-lg font-bold text-blue-700">$25</span>
+              <span className="text-xs text-gray-500">/lifetime</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="animate-float-reverse pointer-events-none absolute -bottom-4 -left-6 z-30 size-26 sm:-bottom-6 sm:-left-8 sm:size-30">
           <Image
             src="/images/auth/cone-01.png"
             alt="3D Pyramid"
@@ -145,25 +169,22 @@ export function AuthVisualHero() {
           />
         </div>
 
-        {/* 5. ANIMATED 3D SHAPE: White Zigzag Spring Ribbon - Right */}
-        <div className="animate-float-spring pointer-events-none absolute -right-8 top-1/2 z-30 size-24 -translate-y-1/2 sm:-right-12 sm:size-28">
+        <div className="animate-float-spring pointer-events-none absolute -right-6 bottom-24 z-30 size-22 sm:-right-8 sm:bottom-28 sm:size-26">
           <Image
             src="/images/auth/cone02.png"
             alt="3D Spring Ribbon"
-            width={120}
-            height={120}
+            width={115}
+            height={115}
             className="size-full object-contain drop-shadow-2xl"
           />
         </div>
 
-        {/* 6. BOTTOM-RIGHT CARD: Happy Students (Lime Green) */}
-        <div className="absolute -bottom-6 -right-5 z-25 w-[250px] rounded-[22px] bg-brand-lime p-3.5 shadow-xl sm:-bottom-8 sm:-right-8 sm:w-[280px]">
+        <div className="absolute -bottom-2 right-0 z-25 w-[260px] rotate-0 rounded-[24px] bg-brand-lime p-3.5 shadow-xl sm:bottom-0 sm:right-2 sm:w-[290px]">
           <h4 className="font-heading text-sm font-bold text-black sm:text-[15px]">
             Happy Students
           </h4>
           <div className="mt-0.5 flex items-center gap-1.5 text-xs font-bold text-black">
             <span>4.5 (240)</span>
-            {/* Blue star as in Figma */}
             <Star size={14} className="fill-[#003BE2] text-[#003BE2]" />
           </div>
 
@@ -183,7 +204,6 @@ export function AuthVisualHero() {
             </span>
           </div>
         </div>
-
       </div>
     </div>
   );

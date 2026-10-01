@@ -2,15 +2,15 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Metadata } from 'next';
-import { RegisterForm } from '@/features/auth/components/RegisterForm';
+import { LoginForm } from '@/features/auth/components/LoginForm';
 import { AuthVisualHero } from '@/features/auth/components/AuthVisualHero';
 
 export const metadata: Metadata = {
-  title: 'Sign Up — ByteSpace',
-  description: 'Create an account and start learning with ByteSpace courses',
+  title: 'Sign In — ByteSpace',
+  description: 'Log in to your ByteSpace account to access your courses',
 };
 
-export default function RegisterPage() {
+export default function LoginPage() {
   return (
     <main className="relative flex min-h-screen w-full flex-col justify-between overflow-x-hidden bg-brand-blue px-4 py-6 sm:px-8 sm:py-8 lg:px-12">
       <div
@@ -46,11 +46,10 @@ export default function RegisterPage() {
         <div className="flex flex-col lg:col-span-6 xl:col-span-6">
           <div className="mb-4 max-w-xl text-center lg:mb-6 lg:text-left">
             <h2 className="font-heading text-2xl font-bold tracking-tight text-white sm:text-3xl lg:text-4xl">
-              Sign up and come in
+              Sign in with ease
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-white/80 sm:text-base">
-              The registration process is straightforward, uncomplicated, and efficient,
-              allowing users to sign up quickly, easily, and at no cost
+              Experience a seamless and efficient sign-in process that grants you instant access to a world of knowledge.
             </p>
           </div>
 
@@ -60,7 +59,7 @@ export default function RegisterPage() {
         </div>
 
         <div className="flex justify-center lg:col-span-6 xl:col-span-6 lg:justify-end">
-          <RegisterForm />
+          <LoginForm />
         </div>
       </div>
 
