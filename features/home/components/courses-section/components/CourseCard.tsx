@@ -21,6 +21,8 @@ export interface CourseCardProps {
   rating?: string;
   level?: string;
   studentsCount?: string;
+  slug?: string;
+  id?: string;
 }
 
 export function CourseCard({
@@ -34,12 +36,16 @@ export function CourseCard({
   rating = '4.5',
   level = 'Beginner',
   studentsCount = '26+',
+  slug,
+  id,
 }: CourseCardProps) {
+  const courseHref = slug ? `/courses/${slug}` : id ? `/courses/${id}` : '/courses';
+
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-[26px] sm:rounded-[28px] border border-[#e8e9ed] bg-white p-3 sm:p-3.5 transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.04] hover:-translate-y-1">
       {/* Course Thumbnail with Floating Frosted Badges */}
       <div className="relative aspect-[16/10] sm:aspect-[1.58] w-full overflow-hidden rounded-[18px] sm:rounded-[20px] bg-[#f4f4f6]">
-        <Link href="/courses" className="block relative size-full">
+        <Link href={courseHref} className="block relative size-full">
           <Image
             src={image}
             alt={title}
@@ -73,7 +79,7 @@ export function CourseCard({
               className="m-0 truncate text-[17px] sm:text-[18px] font-bold tracking-tight text-[#111827]"
             >
               <Link
-                href="/courses"
+                href={courseHref}
                 className="hover:text-brand-blue transition-colors"
               >
                 {title}
