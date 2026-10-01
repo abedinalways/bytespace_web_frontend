@@ -82,7 +82,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         }`}
       >
         <div className="relative mx-auto flex h-full w-[min(90%,1200px)] items-center justify-between gap-3 max-[420px]:w-[94%] max-[420px]:gap-2">
-          <Logo className="shrink-0 text-2xl font-extrabold tracking-[-.04em] text-white max-md:text-[19px] max-[420px]:gap-1 max-[420px]:text-[15px] max-[420px]:[&_svg]:size-6" />
+          <Logo className="shrink-0 text-white" />
 
           {/* Desktop Navigation */}
           <nav
@@ -227,7 +227,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         <div className="mx-auto flex h-[78px] w-[min(90%,1200px)] shrink-0 items-center justify-between gap-3 max-[420px]:w-[94%] max-[420px]:gap-2 border-b border-white/10">
           <Logo
             onClick={() => setIsMenuOpen(false)}
-            className="shrink-0 text-2xl font-extrabold tracking-[-.04em] text-white max-md:text-[19px] max-[420px]:gap-1 max-[420px]:text-[15px] max-[420px]:[&_svg]:size-6"
+            className="shrink-0 text-white"
           />
 
           <div className="flex items-center gap-2">
