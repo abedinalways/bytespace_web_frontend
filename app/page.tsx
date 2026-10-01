@@ -5,6 +5,7 @@ import CoursesSection from "@/features/home/components/courses-section/CoursesSe
 import ExploreSection from "@/features/home/components/explore-section/ExploreSection";
 import { ProfessionalGrowthSection } from "@/features/home/components/professional-growth";
 import { PotentialCreatorSection } from "@/features/home/components/potential-creator";
+import { CommunitySection } from "@/features/home/components/community";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <ExploreSection />
         <ProfessionalGrowthSection />
         <PotentialCreatorSection />
+        <CommunitySection />
       </main>
    </div>
   );
