@@ -2,9 +2,7 @@
 
 import React, { useState } from 'react';
 import {
-  SlidersHorizontal,
   ChevronDown,
-  LayoutGrid,
   Check,
   RotateCcw,
 } from 'lucide-react';
