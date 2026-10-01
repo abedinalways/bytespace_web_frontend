@@ -293,14 +293,14 @@ export function HeroSection() {
         <div className="pointer-events-auto relative sm:absolute sm:top-[58%] sm:right-[6%] md:top-[61%] md:right-[12%] lg:top-[61.5%] lg:right-[24.5%] xl:top-[61%] xl:right-[25%]">
           <div data-depth="-38" className="parallax-item">
             <div className="floating-element">
-              <div className="grid w-full gap-2 rounded-2xl bg-brand-white/95 p-3.5 text-left text-brand-black shadow-[0_12px_28px_rgba(7,18,59,0.14)] border border-white/40 backdrop-blur-md transition-transform duration-200 hover:scale-105 sm:w-44 sm:p-3 sm:gap-2 md:w-52 lg:w-58">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-brand-gray sm:text-sm">Learning Progress</span>
-                  <b className="text-xl font-bold leading-none text-brand-blue sm:text-brand-black sm:text-4xl md:text-5xl lg:text-[48px] sm:font-semibold">
-                    55%
-                  </b>
+              <div className="w-[155px] xs:w-[170px] sm:w-[200px] md:w-[220px] rounded-[22px] sm:rounded-[26px] bg-white p-3.5 xs:p-4 sm:p-5 text-left text-brand-black shadow-[0_12px_32px_rgba(7,18,59,0.12)] border border-white/80 backdrop-blur-md transition-transform duration-200 hover:scale-105">
+                <span className="block text-xs xs:text-[13px] sm:text-sm font-medium text-[#18181B]">
+                  Learning Progress
+                </span>
+                <div className="my-1.5 sm:my-2 font-heading text-3xl xs:text-4xl sm:text-[44px] font-bold tracking-tight text-[#18181B] leading-none">
+                  55%
                 </div>
-                <div className="h-2 w-full overflow-hidden rounded-full bg-black/10 sm:h-1.75">
+                <div className="h-2 sm:h-2.5 w-full overflow-hidden rounded-full bg-gray-100">
                   <div className="h-full w-[55%] rounded-full bg-brand-lime" />
                 </div>
               </div>
