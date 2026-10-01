@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/features/home/components/hero-secion/Hero";
 import { Branding } from "@/features/home/components/branding/Branding";
-import SkillsSection from "@/features/home/components/skills-section/SkillsSection";
+import CoursesSection from "@/features/home/components/courses-section/CoursesSection";
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <main className="min-h-screen overflow-hidden bg-brand-white text-brand-black">
         <HeroSection />
         <Branding />
-        <SkillsSection />
+        <CoursesSection />
       </main>
    </div>
   );
