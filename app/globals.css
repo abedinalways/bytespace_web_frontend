@@ -12,6 +12,7 @@
   --color-brand-lime:  #D4FB20;
   --color-brand-black: #040819;
   --color-brand-white: #F5F5F6;
+  --color-branding-bg: var(--branding-bg);
   --color-background:           var(--background);
   --color-foreground:           var(--foreground);
   --color-card:                 var(--card);
@@ -54,6 +55,7 @@
   /* Surfaces */
   --background:         #F5F5F6;
   --foreground:         #040819;
+  --branding-bg:        rgb(229 231 235 / 0.4); /* bg-gray-200/40 */
 
   /* Card / Popover */
   --card:               #ffffff;
@@ -96,6 +98,7 @@
   /* Surfaces */
   --background:         #040819;
   --foreground:         #F5F5F6;
+  --branding-bg:        rgb(229 231 235 / 0.08);
 
   /* Card / Popover */
   --card:               #0c1228;

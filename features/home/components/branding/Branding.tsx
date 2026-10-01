@@ -94,22 +94,11 @@ const BRANDS: Brand[] = [
 
 export function Branding() {
   return (
-    <section 
-      aria-label="Partner brands" 
-      className="relative w-full overflow-hidden  bg-primary-foreground py-8 sm:py-10 md:py-12 dark:bg-primary-foreground"
+    <section
+      aria-label="Partner brands"
+      className="relative w-full overflow-hidden bg-branding-bg py-8 sm:py-10 md:py-12"
     >
-     
-      <div 
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-gradient-to-r from-brand-white sm:w-36 md:w-48 dark:from-brand-black to-transparent" 
-      />
-      <div 
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-gradient-to-l from-brand-white sm:w-36 md:w-48 dark:from-brand-black to-transparent" 
-      />
-
-      
-      <div className="pause-on-hover flex select-none overflow-hidden">
+      <div className="pause-on-hover flex select-none overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
         {/* Set 1 */}
         <div className="animate-marquee flex shrink-0 items-center justify-around gap-10 sm:gap-14 md:gap-20">
           {BRANDS.map((brand, idx) => (
@@ -127,8 +116,7 @@ export function Branding() {
           ))}
         </div>
 
-     
-        <div 
+        <div
           aria-hidden="true"
           className="animate-marquee flex shrink-0 items-center justify-around gap-10 sm:gap-14 md:gap-20 ml-10 sm:ml-14 md:ml-20"
         >

@@ -47,7 +47,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
   return (
     <>
       <header
-        className={`z-40 w-full text-white transition-all duration-300 ease-in-out ${
+        className={`z-50 w-full text-white transition-all duration-300 ease-in-out ${
           overlay ? 'fixed inset-x-0 top-0' : 'sticky top-0'
         } ${
           isScrolled
@@ -113,11 +113,11 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
         </div>
       </header>
 
-      {/* Full-Screen Mobile Navigation View (Seamless bg-brand-blue, 100dvh full height, unified background) */}
+      
       <div
         id="mobile-navigation"
         aria-label="Mobile navigation"
-        className={`fixed inset-0 z-50 flex h-[100dvh] w-full flex-col bg-brand-blue text-white md:hidden transition-all duration-300 ease-in-out ${
+        className={`fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col bg-brand-blue text-white md:hidden transition-all duration-300 ease-in-out ${
           isMenuOpen
             ? 'opacity-100 pointer-events-auto translate-y-0'
             : 'opacity-0 pointer-events-none -translate-y-3'
@@ -155,7 +155,7 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           </div>
         </div>
 
-        {/* Full-Screen Content: Nav Links + Bottom CTAs */}
+  
         <div className="mx-auto flex w-[min(90%,1200px)] flex-1 flex-col justify-between overflow-y-auto py-6 pb-10 max-[420px]:w-[94%]">
           <nav className="flex flex-col gap-2">
             {navLinks.map((link, index) => {

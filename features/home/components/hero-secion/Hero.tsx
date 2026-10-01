@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Navbar } from '@/components/layout/Navbar';
 import { SearchBar } from '@/components/reusable/SearchBar';
 
 // Register useGSAP plugin safely
@@ -140,8 +139,6 @@ export function HeroSection() {
           backgroundSize: '120px 120px',
         }}
       />
-
-      <Navbar overlay />
 
       {/* Main Text Content */}
       <div className="relative z-3 mx-auto max-w-6xl text-center">
