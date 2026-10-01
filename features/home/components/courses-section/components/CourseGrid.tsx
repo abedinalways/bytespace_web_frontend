@@ -4,6 +4,7 @@ import { CourseCard, CourseCardProps } from './CourseCard';
 export const coursesData: CourseCardProps[] = [
   {
     title: 'Learn Figma from Basic',
+    slug: 'learn-figma-from-basic',
     creator: 'purepearl studio',
     category: 'DESIGN',
     price: '$25',
@@ -17,6 +18,7 @@ export const coursesData: CourseCardProps[] = [
   },
   {
     title: 'Build Digital Asset',
+    slug: 'build-digital-asset',
     creator: 'purepearl studio',
     category: 'DESIGN',
     price: '$25',
@@ -30,6 +32,7 @@ export const coursesData: CourseCardProps[] = [
   },
   {
     title: 'the Power of Big Data',
+    slug: 'the-power-of-big-data',
     creator: 'purepearl studio',
     category: 'DATA & ANALYTICS',
     price: '$25',
@@ -43,6 +46,7 @@ export const coursesData: CourseCardProps[] = [
   },
   {
     title: 'Balancing Productivity and Focus',
+    slug: 'balancing-productivity-and-focus',
     creator: 'purepearl studio',
     category: 'PRODUCTIVITY',
     price: '$25',
@@ -56,6 +60,7 @@ export const coursesData: CourseCardProps[] = [
   },
   {
     title: 'Mastering Money Management',
+    slug: 'mastering-money-management',
     creator: 'purepearl studio',
     category: 'FINANCE',
     price: '$25',
@@ -69,6 +74,7 @@ export const coursesData: CourseCardProps[] = [
   },
   {
     title: 'From Idea to Startup Success',
+    slug: 'from-idea-to-startup-success',
     creator: 'purepearl studio',
     category: 'BUSINESS',
     price: '$25',
