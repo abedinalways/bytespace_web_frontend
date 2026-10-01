@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const navColumnOne = [
   { label: 'Featured Courses', href: '/courses' },
@@ -28,7 +29,12 @@ const navColumnThree = [
 ];
 
 export function Footer() {
+  const pathname = usePathname();
   const currentYear = new Date().getFullYear();
+
+  if (pathname === '/register' || pathname === '/login') {
+    return null;
+  }
 
   return (
     <footer className="w-full shrink-0 bg-white dark:bg-card border-t border-gray-100 dark:border-border/60 text-brand-black dark:text-foreground pt-12 sm:pt-14 lg:pt-16 pb-8 sm:pb-10">

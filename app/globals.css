@@ -179,3 +179,51 @@
 .pause-on-hover:hover .animate-marquee-reverse {
   animation-play-state: paused;
 }
+
+/* ============================================================
+   3D FLOATING & AMBIENT ANIMATIONS (AUTH & 3D SHAPES)
+   ============================================================ */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-16px) rotate(5deg) scale(1.03);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-6deg) scale(0.97);
+  }
+}
+
+@keyframes floatSpring {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  33% {
+    transform: translateY(-12px) rotate(-4deg) scale(1.03);
+  }
+  66% {
+    transform: translateY(8px) rotate(3deg) scale(0.98);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-spring {
+  animation: floatSpring 4.5s ease-in-out infinite;
+  will-change: transform;
+}

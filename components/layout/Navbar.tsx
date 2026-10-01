@@ -6,16 +6,34 @@ import {
   BookOpen,
   ChevronRight,
   Home,
+  LogOut,
   ShoppingBag,
   Users,
 } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Logo } from '../reusable/Logo';
+import { useAuth } from '@/features/auth/context/AuthContext';
 
 export function Navbar({ overlay = false }: { overlay?: boolean }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const profileRef = useRef<HTMLDivElement>(null);
+  const { user, isAuthenticated, logout } = useAuth();
   const pathname = usePathname();
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (profileRef.current && !profileRef.current.contains(e.target as Node)) {
+        setIsProfileOpen(false);
+      }
+    }
+    if (isProfileOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isProfileOpen]);
 
   const isHomeActive = pathname === '/';
   const isCoursesActive = pathname.startsWith('/courses');
@@ -104,16 +122,67 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
           </nav>
 
           {/* Desktop Actions */}
-          <div className="hidden shrink-0 items-center gap-7 whitespace-nowrap text-[15px] md:flex [&_a]:transition-opacity [&_a]:hover:opacity-75 [&_a]:focus-visible:rounded-sm [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-4 [&_a]:focus-visible:outline-brand-lime">
-            <Link href="/login">Sign In</Link>
-            <Link href="/register">Join Us</Link>
-            <Link
-              href="/courses"
-              aria-label="Course bag"
-              className="grid place-items-center max-md:hidden"
-            >
-              <ShoppingBag size={19} />
-            </Link>
+          <div className="hidden shrink-0 items-center gap-6 whitespace-nowrap text-[15px] md:flex [&_a]:transition-opacity [&_a]:hover:opacity-75 [&_a]:focus-visible:rounded-sm [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-offset-4 [&_a]:focus-visible:outline-brand-lime">
+            {isAuthenticated && user ? (
+              <div ref={profileRef} className="relative flex items-center gap-4">
+                <button
+                  type="button"
+                  onClick={() => setIsProfileOpen(!isProfileOpen)}
+                  className="flex items-center gap-2.5 rounded-full border border-white/20 bg-white/10 py-1 pl-1 pr-3 text-white transition-all hover:bg-white/20 active:scale-95 focus-visible:outline-brand-lime"
+                  aria-label="User account menu"
+                  aria-expanded={isProfileOpen}
+                >
+                  <div className="relative size-8 overflow-hidden rounded-full bg-brand-lime font-bold text-brand-black flex items-center justify-center text-xs">
+                    {user.avatar ? (
+                      <img src={user.avatar} alt={user.name} className="size-full object-cover" />
+                    ) : (
+                      user.name.slice(0, 2).toUpperCase()
+                    )}
+                  </div>
+                  <span className="text-sm font-semibold tracking-tight">{user.name.split(' ')[0]}</span>
+                </button>
+
+                {/* Dropdown Menu */}
+                {isProfileOpen && (
+                  <div className="absolute right-0 top-full mt-2 w-52 rounded-2xl bg-white p-2 text-brand-black shadow-2xl ring-1 ring-black/5 animate-in fade-in zoom-in-95 duration-150 z-50">
+                    <div className="px-3 py-2.5 border-b border-gray-100">
+                      <p className="text-xs font-bold text-gray-900 truncate">{user.name}</p>
+                      <p className="text-[11px] text-gray-500 truncate">{user.email}</p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        logout();
+                        setIsProfileOpen(false);
+                      }}
+                      className="mt-1 flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-rose-600 hover:bg-rose-50 transition-colors"
+                    >
+                      <LogOut size={14} /> Sign Out
+                    </button>
+                  </div>
+                )}
+
+                <Link
+                  href="/courses"
+                  aria-label="Course bag"
+                  className="grid place-items-center max-md:hidden"
+                >
+                  <ShoppingBag size={19} />
+                </Link>
+              </div>
+            ) : (
+              <>
+                <Link href="/login">Sign In</Link>
+                <Link href="/register">Join Us</Link>
+                <Link
+                  href="/courses"
+                  aria-label="Course bag"
+                  className="grid place-items-center max-md:hidden"
+                >
+                  <ShoppingBag size={19} />
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile Right Controls: Bag + Hamburger Button */}
@@ -248,24 +317,54 @@ export function Navbar({ overlay = false }: { overlay?: boolean }) {
             style={{
               transitionDelay: isMenuOpen ? '250ms' : '0ms',
             }}
-            className={`mt-6 grid grid-cols-2 gap-3 border-t border-white/10 pt-5 transition-all duration-300 ${
+            className={`mt-6 border-t border-white/10 pt-5 transition-all duration-300 ${
               isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
             }`}
           >
-            <Link
-              href="/login"
-              onClick={() => setIsMenuOpen(false)}
-              className="flex items-center justify-center rounded-xl border border-white/20 bg-white/5 py-3.5 text-[15px] font-medium text-white transition-all duration-200 hover:bg-white/15 hover:border-white/30 active:scale-[0.98]"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/register"
-              onClick={() => setIsMenuOpen(false)}
-              className="flex items-center justify-center rounded-xl bg-brand-lime py-3.5 text-[15px] font-semibold text-brand-black shadow-lg shadow-brand-lime/20 transition-all duration-200 hover:brightness-105 active:scale-[0.98]"
-            >
-              Join Us
-            </Link>
+            {isAuthenticated && user ? (
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-3 rounded-xl bg-white/10 p-3">
+                  <div className="relative size-10 overflow-hidden rounded-full bg-brand-lime font-bold text-brand-black flex items-center justify-center text-sm">
+                    {user.avatar ? (
+                      <img src={user.avatar} alt={user.name} className="size-full object-cover" />
+                    ) : (
+                      user.name.slice(0, 2).toUpperCase()
+                    )}
+                  </div>
+                  <div className="overflow-hidden">
+                    <p className="font-semibold text-white truncate text-sm">{user.name}</p>
+                    <p className="text-xs text-white/60 truncate">{user.email}</p>
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    logout();
+                    setIsMenuOpen(false);
+                  }}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-rose-500/20 py-3 text-sm font-semibold text-rose-300 transition-colors hover:bg-rose-500/30"
+                >
+                  <LogOut size={16} /> Sign Out
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-3">
+                <Link
+                  href="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center rounded-xl border border-white/20 bg-white/5 py-3.5 text-[15px] font-medium text-white transition-all duration-200 hover:bg-white/15 hover:border-white/30 active:scale-[0.98]"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/register"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-center rounded-xl bg-brand-lime py-3.5 text-[15px] font-semibold text-brand-black shadow-lg shadow-brand-lime/20 transition-all duration-200 hover:brightness-105 active:scale-[0.98]"
+                >
+                  Join Us
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
