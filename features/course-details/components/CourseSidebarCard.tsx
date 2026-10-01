@@ -117,7 +117,12 @@ export function CourseSidebarCard({ course }: CourseSidebarCardProps) {
           </div>
           <div>
             <h4 className="font-bold text-sm text-[#111827]">
-              {course.creator}
+              <Link
+                href={`/creators/${course.creatorSlug || 'purepearl-studio'}`}
+                className="hover:text-brand-blue transition-colors"
+              >
+                {course.creator}
+              </Link>
             </h4>
             <p className="text-xs text-[#717684]">
               {course.creatorTitle}
@@ -130,7 +135,7 @@ export function CourseSidebarCard({ course }: CourseSidebarCardProps) {
         </p>
 
         <Link
-          href={`/creators/${course.creatorSlug}`}
+          href={`/creators/${course.creatorSlug || 'purepearl-studio'}`}
           className="inline-block rounded-full border border-[#d1d5db] px-5 py-2 text-xs font-semibold text-[#374151] hover:bg-gray-50 transition-colors"
         >
           See Full Profile
