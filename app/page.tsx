@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { HeroSection } from "@/features/home/components/hero-secion/Hero";
 import { Branding } from "@/features/home/components/branding/Branding";
 import CoursesSection from "@/features/home/components/courses-section/CoursesSection";
+import ExploreSection from "@/features/home/components/explore-section/ExploreSection";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
         <HeroSection />
         <Branding />
         <CoursesSection />
+        <ExploreSection />
       </main>
    </div>
   );

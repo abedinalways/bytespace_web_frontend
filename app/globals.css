@@ -84,6 +84,7 @@
 
   /* Borders, inputs, focus ring */
   --border:  #dddde0;
+  --border-secondary:#ced0d3;
   --input:   #dddde0;
   --ring:    #003BE2;
 
@@ -127,6 +128,7 @@
 
   /* Borders, inputs, focus ring */
   --border:  oklch(1 0 0 / 10%);
+  --border-secondary: #bbc0ca;
   --input:   oklch(1 0 0 / 15%);
   --ring:    #003BE2;
 }
