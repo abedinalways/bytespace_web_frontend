@@ -26,8 +26,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${poppins.variable} ${geistMono.variable} antialiased`}
     >
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased flex flex-col justify-between">
-        {children}
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased flex flex-col">
+        <div className="flex-1 flex flex-col">{children}</div>
         <Footer />
       </body>
     </html>
